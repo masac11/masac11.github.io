@@ -155,6 +155,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-服务器运行程序报OOM异常解决过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/22/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8A%A5OOM%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/">服务器运行程序报OOM异常解决过程</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/22/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8A%A5OOM%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2019-10-22T07:11:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>本地程序运行正常，在打包成为war包放到服务器上启动时选择查询所有微博时会报OOM java.lang.OutOfMemoryError: Java heap space。</li>
+<li>启动时参数加上-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/xrltest1/tomcat/dumpfile/heap.bin。</li>
+<li>使用eclipse memory analyzer 分析dump出来的文件可以看到溢出的原因是一个ArrayList对象，里面存储的是com.mysql.jdbc.BufferRow对象，<br>这个BufferRow是存储数据库中的行数据包的。所以就想到是一次查询的行太多导致堆内存分配不足，想到的解决办法一种是对它进行瀑布流的缓存加载，一种是分页，最后一种是调整堆大小。</li>
+<li>先使用jps命令，jps是jdk提供的一个查看当前java进程的小工具。</li>
+<li>jps -v | grep 进程id，查看启动参数，发现-Xmx = 20m,-Xms = 20m。</li>
+<li>修改Catalina.sh设置-Xmx = 512m,-Xms = 512m。<br>JAVA_OPTS=”-server -Xms20m -Xmx20m -Xmn768m -XX:PermSize=128m -XX:MaxPermSize=256m -XX:+UseParallelOldGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/xrltest1/tomcat/dumpfile/heap.bin  -Xloggc:/home/xrltest1/tomcat/logs/gc.log”</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">JVM</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/22/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8A%A5OOM%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-CyclicBarrier和CountdownLatch可以混用吗？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -204,87 +294,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/10/22/CyclicBarrier%E5%92%8CCountdownLatch%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-服务器运行程序报OOM异常解决过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/22/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8A%A5OOM%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/">服务器运行程序报OOM异常解决过程</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/22/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8A%A5OOM%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2019-10-22T07:11:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li>本地程序运行正常，在打包成为war包放到服务器上启动时选择查询所有微博时会报OOM java.lang.OutOfMemoryError: Java heap space。</li>
-<li>启动时参数加上-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/xrltest1/tomcat/dumpfile/heap.bin。</li>
-<li>使用eclipse memory analyzer 分析dump出来的文件可以看到溢出的原因是一个ArrayList对象，里面存储的是com.mysql.jdbc.BufferRow对象，<br>这个BufferRow是存储数据库中的行数据包的。所以就想到是一次查询的行太多导致堆内存分配不足，想到的解决办法一种是对它进行瀑布流的缓存加载，一种是分页，最后一种是调整堆大小。</li>
-<li>先使用jps命令，jps是jdk提供的一个查看当前java进程的小工具。</li>
-<li>jps -v | grep 进程id，查看启动参数，发现-Xmx = 20m,-Xms = 20m。</li>
-<li>修改Catalina.sh设置-Xmx = 512m,-Xms = 512m。<br>JAVA_OPTS=”-server -Xms20m -Xmx20m -Xmn768m -XX:PermSize=128m -XX:MaxPermSize=256m -XX:+UseParallelOldGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/xrltest1/tomcat/dumpfile/heap.bin  -Xloggc:/home/xrltest1/tomcat/logs/gc.log”</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/22/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8A%A5OOM%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/">展开全文 >></a>
         </p>
       
 
@@ -1111,15 +1120,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Android</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1132,6 +1137,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">云服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
             
             <div class="clearfix"></div>
