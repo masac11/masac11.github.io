@@ -177,7 +177,7 @@
       
         <ol>
 <li>本地程序运行正常，在打包成为war包放到服务器上启动时选择查询所有微博时会报OOM java.lang.OutOfMemoryError: Java heap space。</li>
-<li>启动时参数加上-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/xrltest1/tomcat/dumpfile/heap.bin。</li>
+<li>启动时参数加上 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/xrltest1/tomcat/dumpfile/heap.bin。</li>
 <li>使用eclipse memory analyzer 分析dump出来的文件可以看到溢出的原因是一个ArrayList对象，里面存储的是com.mysql.jdbc.BufferRow对象，<br>这个BufferRow是存储数据库中的行数据包的。所以就想到是一次查询的行太多导致堆内存分配不足，想到的解决办法一种是对它进行瀑布流的缓存加载，一种是分页，最后一种是调整堆大小。</li>
 <li>先使用jps命令，jps是jdk提供的一个查看当前java进程的小工具。</li>
 <li>jps -v | grep 进程id，查看启动参数，发现-Xmx = 20m,-Xms = 20m。</li>
@@ -1134,11 +1134,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
