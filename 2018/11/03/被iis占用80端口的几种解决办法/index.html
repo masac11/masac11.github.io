@@ -8,14 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>被iis占用80端口的几种解决办法 | 11&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="第一种方法：卸载iis我的电脑-添加或删除组件-添加或删除Windows组件-IIS信息服务去掉 IIS前面的勾然后“下一步”就可以了。第二种方法：改iis的端口我的电脑-右击-管理-iis管理-Default Web Site右击-编辑绑定第三种方法：停止iis服务第一种：在管理员命令行运行iisreset&#x2F;stop第二种：服务里关闭World Wide Web Publishing Servi">
+  <meta name="description" content="卸载iis我的电脑-添加或删除组件-添加或删除Windows组件-IIS信息服务去掉 IIS前面的勾然后“下一步”就可以了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="被iis占用80端口的几种解决办法">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2018&#x2F;11&#x2F;03&#x2F;%E8%A2%ABiis%E5%8D%A0%E7%94%A880%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="11&#39;s Blog">
-<meta property="og:description" content="第一种方法：卸载iis我的电脑-添加或删除组件-添加或删除Windows组件-IIS信息服务去掉 IIS前面的勾然后“下一步”就可以了。第二种方法：改iis的端口我的电脑-右击-管理-iis管理-Default Web Site右击-编辑绑定第三种方法：停止iis服务第一种：在管理员命令行运行iisreset&#x2F;stop第二种：服务里关闭World Wide Web Publishing Servi">
+<meta property="og:description" content="卸载iis我的电脑-添加或删除组件-添加或删除Windows组件-IIS信息服务去掉 IIS前面的勾然后“下一步”就可以了。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-22T06:51:05.545Z">
+<meta property="og:updated_time" content="2019-10-27T13:23:40.680Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="11&#39;s Blog" type="application/atom+xml">
@@ -177,7 +177,21 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>第一种方法：卸载iis<br>我的电脑-添加或删除组件-添加或删除Windows组件-IIS信息服务<br>去掉 IIS前面的勾然后“下一步”就可以了。<br>第二种方法：改iis的端口<br>我的电脑-右击-管理-iis管理-Default Web Site右击-编辑绑定<br>第三种方法：停止iis服务<br>第一种：在管理员命令行运行iisreset/stop<br>第二种：服务里关闭World Wide Web Publishing Service<br>第四种方法：<br>修改使用的软件的端口<br>第五种方法：<br>在管理员命令行运行netstat -aon|findstr 80，然后tskill 占用的端口</p>
+        <ol>
+<li><p>卸载iis<br>我的电脑-添加或删除组件-添加或删除Windows组件-IIS信息服务<br>去掉 IIS前面的勾然后“下一步”就可以了。</p>
+ <a id="more"></a> 
+</li>
+<li><p>改iis的端口<br>   我的电脑-右击-管理-iis管理-Default Web Site右击-编辑绑定</p>
+</li>
+<li><p>停止iis服务</p>
+<ol>
+<li>在管理员命令行运行iisreset/stop</li>
+<li>服务里关闭World Wide Web Publishing Service</li>
+<li>修改使用的软件的端口</li>
+<li>在管理员命令行运行netstat -aon|findstr 80，然后tskill 占用的端口</li>
+</ol>
+</li>
+</ol>
 
       
 
@@ -280,6 +294,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -403,11 +430,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -416,6 +443,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

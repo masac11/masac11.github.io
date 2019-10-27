@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>volatile解析 | 11&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="作用可以被当作轻量级的 synchronized，不需要加锁，保证可见性，禁止指令重排序，保证单个操作的原子性。 volatile 写的内存语义当写一个 volatile 变量的时候，JMM 会把该线程对应的本地内存中的共享变量值刷新回主存。 volatile 读的内存语义当读一个 volatile 变量的时候，JMM 会把该线程对应的本地内存置为无效，强制从主内存中读取。 禁止指令重排序的实现通">
+  <meta name="description" content="作用可以被当作轻量级的 synchronized，不需要加锁，保证可见性，禁止指令重排序，保证单个操作的原子性。 volatile 写的内存语义当写一个 volatile 变量的时候，JMM 会把该线程对应的本地内存中的共享变量值刷新回主存。">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="volatile解析">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;22&#x2F;volatile%E8%A7%A3%E6%9E%90&#x2F;index.html">
 <meta property="og:site_name" content="11&#39;s Blog">
-<meta property="og:description" content="作用可以被当作轻量级的 synchronized，不需要加锁，保证可见性，禁止指令重排序，保证单个操作的原子性。 volatile 写的内存语义当写一个 volatile 变量的时候，JMM 会把该线程对应的本地内存中的共享变量值刷新回主存。 volatile 读的内存语义当读一个 volatile 变量的时候，JMM 会把该线程对应的本地内存置为无效，强制从主内存中读取。 禁止指令重排序的实现通">
+<meta property="og:description" content="作用可以被当作轻量级的 synchronized，不需要加锁，保证可见性，禁止指令重排序，保证单个操作的原子性。 volatile 写的内存语义当写一个 volatile 变量的时候，JMM 会把该线程对应的本地内存中的共享变量值刷新回主存。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-22T07:09:41.875Z">
+<meta property="og:updated_time" content="2019-10-27T13:28:15.289Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="11&#39;s Blog" type="application/atom+xml">
@@ -158,6 +158,10 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  <i class="fa fa-thumb-tack"></i>
+  <font color=7D26CD>置顶</font>
+  <span class="post-meta-divider">|</span>
+
 <article id="post-volatile解析" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -180,6 +184,8 @@
       
         <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>可以被当作轻量级的 synchronized，不需要加锁，保证可见性，禁止指令重排序，保证单个操作的原子性。</p>
 <h2 id="volatile-写的内存语义"><a href="#volatile-写的内存语义" class="headerlink" title="volatile 写的内存语义"></a>volatile 写的内存语义</h2><p>当写一个 volatile 变量的时候，JMM 会把该线程对应的本地内存中的共享变量值刷新回主存。</p>
+<a id="more"></a> 
+
 <h2 id="volatile-读的内存语义"><a href="#volatile-读的内存语义" class="headerlink" title="volatile 读的内存语义"></a>volatile 读的内存语义</h2><p>当读一个 volatile 变量的时候，JMM 会把该线程对应的本地内存置为无效，强制从主内存中读取。</p>
 <h2 id="禁止指令重排序的实现"><a href="#禁止指令重排序的实现" class="headerlink" title="禁止指令重排序的实现"></a>禁止指令重排序的实现</h2><p>通过 happens-before 规则来插入内存屏障禁止指令重排序，对于处理器重排序，JMM 的处理器重排序规则会要求 Java 编译器在生成指令序列的时，插入特定类型的内存屏障指令来禁止特定类型的处理器重排序。</p>
 <p>如果 A happens-before B，则 A 操作所做的操作对 B 操作可见，并且按顺序 A 操作排在 B 操作的前面，并不要求 A 操作一定要在 B 操作之前执行。</p>
@@ -207,6 +213,11 @@
       
     </div>
     <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
       
       
 	<div class="article-tag tagcloud">
@@ -314,6 +325,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#作用"><span class="toc-number">1.</span> <span class="toc-text">作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile-写的内存语义"><span class="toc-number">2.</span> <span class="toc-text">volatile 写的内存语义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#volatile-读的内存语义"><span class="toc-number">3.</span> <span class="toc-text">volatile 读的内存语义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#禁止指令重排序的实现"><span class="toc-number">4.</span> <span class="toc-text">禁止指令重排序的实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#可见性和单个写操作的原子性的实现原理"><span class="toc-number">5.</span> <span class="toc-text">可见性和单个写操作的原子性的实现原理</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -437,11 +461,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -450,6 +474,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

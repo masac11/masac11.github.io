@@ -155,6 +155,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ThreadLocal解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/22/ThreadLocal%E8%A7%A3%E6%9E%90/">ThreadLocal解析</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/22/ThreadLocal%E8%A7%A3%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2019-10-22T07:09:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>ThreadLocal 用于提供线程局部变量，它会为每个线程创建一个单独的变量副本，保证了多线程环境下数据的独立性，相当于线程的 private static 变量。</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/22/ThreadLocal%E8%A7%A3%E6%9E%90/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-服务器运行程序报OOMERROR解决过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -176,14 +255,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ol>
-<li>本地程序运行正常，在打包成为war包放到服务器上启动时选择查询所有微博时会报OOM java.lang.OutOfMemoryError: Java heap space。</li>
-<li>启动时参数加上 -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/xrltest1/tomcat/dumpfile/heap.bin。</li>
-<li>使用eclipse memory analyzer 分析dump出来的文件可以看到溢出的原因是一个ArrayList对象，里面存储的是com.mysql.jdbc.BufferRow对象，<br>这个BufferRow是存储数据库中的行数据包的。所以就想到是一次查询的行太多导致堆内存分配不足，想到的解决办法一种是对它进行瀑布流的缓存加载，一种是分页，最后一种是调整堆大小。</li>
-<li>先使用jps命令，jps是jdk提供的一个查看当前java进程的小工具。</li>
-<li>jps -v | grep 进程id，查看启动参数，发现-Xmx = 20m,-Xms = 20m。</li>
-<li>修改Catalina.sh设置-Xmx = 512m,-Xms = 512m。<br>JAVA_OPTS=”-server -Xms20m -Xmx20m -Xmn768m -XX:PermSize=128m -XX:MaxPermSize=256m -XX:+UseParallelOldGC -XX:+PrintGCDateStamps -XX:+PrintGCDetails -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/home/xrltest1/tomcat/dumpfile/heap.bin  -Xloggc:/home/xrltest1/tomcat/logs/gc.log”</li>
-</ol>
-
+<li><p>本地程序运行正常，在打包成为war包放到服务器上启动时选择查询所有微博时会报OOM java.lang.OutOfMemoryError: Java heap space。</p>
+        
       
 
       
@@ -245,37 +318,39 @@
 
 
   
-    <article id="post-CyclicBarrier和CountdownLatch可以混用吗？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-volatile解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/22/CyclicBarrier%E5%92%8CCountdownLatch%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F/">CyclicBarrier和CountdownLatch可以混用吗？</a>
+      <a class="article-title" href="/2019/10/22/volatile%E8%A7%A3%E6%9E%90/">volatile解析</a>
     </h1>
   
 
         
-        <a href="/2019/10/22/CyclicBarrier%E5%92%8CCountdownLatch%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F/" class="archive-article-date">
-  	<time datetime="2019-10-22T07:15:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
+        <a href="/2019/10/22/volatile%E8%A7%A3%E6%9E%90/" class="archive-article-date">
+  	<time datetime="2019-10-22T07:09:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> totalThread = <span class="number">10</span>;</span><br><span class="line">        CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(totalThread);</span><br><span class="line">        CyclicBarrier cyclicBarrier = <span class="keyword">new</span> CyclicBarrier(totalThread);</span><br><span class="line">        ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; totalThread; i++) &#123;</span><br><span class="line">            executorService.execute(() -&gt; &#123;</span><br><span class="line">                System.out.println(<span class="string">"run.."</span>);</span><br><span class="line">                countDownLatch.countDown();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"cyclicBarrierBefore.."</span>);</span><br><span class="line">                    cyclicBarrier.await();</span><br><span class="line">                    System.out.println(<span class="string">"cyclicBarrierAfter.."</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"countDownLatchBefore.."</span>);</span><br><span class="line">        countDownLatch.await();</span><br><span class="line">        System.out.println(<span class="string">"countDownLatchAfter.."</span>);</span><br><span class="line">        System.out.println(<span class="string">"end"</span>);</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">run..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">run..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">countDownLatchBefore..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">countDownLatchAfter..</span><br><span class="line">end</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br></pre></td></tr></table></figure>
-
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>两者可以混用，因为等待的不是一个同一个对象。</p>
-
+        <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>可以被当作轻量级的 synchronized，不需要加锁，保证可见性，禁止指令重排序，保证单个操作的原子性。</p>
+<h2 id="volatile-写的内存语义"><a href="#volatile-写的内存语义" class="headerlink" title="volatile 写的内存语义"></a>volatile 写的内存语义</h2><p>当写一个 volatile 变量的时候，JMM 会把该线程对应的本地内存中的共享变量值刷新回主存。</p>
+        
       
 
       
     </div>
     <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
       
       
 	<div class="article-tag tagcloud">
@@ -293,7 +368,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/22/CyclicBarrier%E5%92%8CCountdownLatch%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/22/volatile%E8%A7%A3%E6%9E%90/">展开全文 >></a>
         </p>
       
 
@@ -347,21 +422,17 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select a,b,c from test group by a;</span><br></pre></td></tr></table></figure>
 
 <p>结果报 NLY_FULL_GROUP_BY 错误。</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p> sql_mode 配置中，对于 GROUP BY 聚合操作，如果在 SELECT 中出现的列，必须要在GROUP BY 中出现。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ol>
-<li>去掉 ONLY_FULL_GROUP_BY，重新设置值。 </li>
-</ol>
-<p>set @@sql_mode<br>=’STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION’;</p>
-<ol start="2">
-<li>在 my.cnf 里面设置:</li>
-</ol>
-<p>[mysqld]<br>sql_mode=’STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION’</p>
-
+        
       
 
       
     </div>
     <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
       
       
 	<div class="article-tag tagcloud">
@@ -409,55 +480,38 @@
 
 
   
-    <article id="post-volatile解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-CyclicBarrier和CountdownLatch可以混用吗？" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/22/volatile%E8%A7%A3%E6%9E%90/">volatile解析</a>
+      <a class="article-title" href="/2019/10/22/CyclicBarrier%E5%92%8CCountdownLatch%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F/">CyclicBarrier和CountdownLatch可以混用吗？</a>
     </h1>
   
 
         
-        <a href="/2019/10/22/volatile%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2019-10-22T07:09:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
+        <a href="/2019/10/22/CyclicBarrier%E5%92%8CCountdownLatch%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F/" class="archive-article-date">
+  	<time datetime="2019-10-22T07:15:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>可以被当作轻量级的 synchronized，不需要加锁，保证可见性，禁止指令重排序，保证单个操作的原子性。</p>
-<h2 id="volatile-写的内存语义"><a href="#volatile-写的内存语义" class="headerlink" title="volatile 写的内存语义"></a>volatile 写的内存语义</h2><p>当写一个 volatile 变量的时候，JMM 会把该线程对应的本地内存中的共享变量值刷新回主存。</p>
-<h2 id="volatile-读的内存语义"><a href="#volatile-读的内存语义" class="headerlink" title="volatile 读的内存语义"></a>volatile 读的内存语义</h2><p>当读一个 volatile 变量的时候，JMM 会把该线程对应的本地内存置为无效，强制从主内存中读取。</p>
-<h2 id="禁止指令重排序的实现"><a href="#禁止指令重排序的实现" class="headerlink" title="禁止指令重排序的实现"></a>禁止指令重排序的实现</h2><p>通过 happens-before 规则来插入内存屏障禁止指令重排序，对于处理器重排序，JMM 的处理器重排序规则会要求 Java 编译器在生成指令序列的时，插入特定类型的内存屏障指令来禁止特定类型的处理器重排序。</p>
-<p>如果 A happens-before B，则 A 操作所做的操作对 B 操作可见，并且按顺序 A 操作排在 B 操作的前面，并不要求 A 操作一定要在 B 操作之前执行。</p>
-<p>happens-before 的 volatile 变量规则：对一个 volatile 域的写，happens-before 于任意后续对这个 volatile 域的读。</p>
-<ol>
-<li><p>在每个 volatile 写操作的前面插入一个 StoreStore 屏障</p>
-</li>
-<li><p>在每个 volatile 写操作的后面插入一个 StoreLoad 屏障</p>
-</li>
-<li><p>在每个 volatile 读操作的后面插入一个 LoadLoad 屏障</p>
-</li>
-<li><p>在每个 volatile 读操作的后面插入一个 LoadStore 屏障</p>
-</li>
-</ol>
-<p><strong>lock 前缀指令也相当于一个内存屏障</strong>（也称内存栅栏），内存屏障主要提供 3 个功能：</p>
-<ol>
-<li>确保指令重排序时不会把其后面的指令排到内存屏障之前的位置，也不会把前面的指令排到内存屏障的后面；即在执行到内存屏障这句指令时，在它前面的操作已经全部完成；</li>
-<li>强制将对缓存的修改操作立即写入主存，利用缓存一致性机制，并且缓存一致性机制会阻止同时修改由两个以上 CPU 缓存的内存区域数据；</li>
-<li>如果是写操作，它会导致其他 CPU 中对应的缓存行无效。</li>
-</ol>
-<h2 id="可见性和单个写操作的原子性的实现原理"><a href="#可见性和单个写操作的原子性的实现原理" class="headerlink" title="可见性和单个写操作的原子性的实现原理"></a>可见性和单个写操作的原子性的实现原理</h2><p>在 CPU 指令中通过 LOCK 前缀和缓存一致性协议保证可见性，LOCK 前缀指令会在执行指令的期间声言处理器的 LOCK# 信号，LOCK# 信号有两种实现方式，一种是锁总线，这种开销较大，会导致其他 CPU 不能访问总线，即不能访问系统内存。还有一种是锁缓存，锁定这块内存区域的缓存并回写到内存，并使用缓存一致性机制来确保修改的一致性，缓存一致性机制会阻止通知修改由两个以上处理器缓存的内存区域，当一个 CPU 核心嗅探到自己存储的共享变量的值被其他 CPU 核心更改时，会将自己本地内存保存的值置为无效。</p>
-
+        <h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> totalThread = <span class="number">10</span>;</span><br><span class="line">        CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(totalThread);</span><br><span class="line">        CyclicBarrier cyclicBarrier = <span class="keyword">new</span> CyclicBarrier(totalThread);</span><br><span class="line">        ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; totalThread; i++) &#123;</span><br><span class="line">            executorService.execute(() -&gt; &#123;</span><br><span class="line">                System.out.println(<span class="string">"run.."</span>);</span><br><span class="line">                countDownLatch.countDown();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"cyclicBarrierBefore.."</span>);</span><br><span class="line">                    cyclicBarrier.await();</span><br><span class="line">                    System.out.println(<span class="string">"cyclicBarrierAfter.."</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"countDownLatchBefore.."</span>);</span><br><span class="line">        countDownLatch.await();</span><br><span class="line">        System.out.println(<span class="string">"countDownLatchAfter.."</span>);</span><br><span class="line">        System.out.println(<span class="string">"end"</span>);</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
       
 
       
     </div>
     <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
       
       
 	<div class="article-tag tagcloud">
@@ -475,7 +529,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/22/volatile%E8%A7%A3%E6%9E%90/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/22/CyclicBarrier%E5%92%8CCountdownLatch%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F/">展开全文 >></a>
         </p>
       
 
@@ -505,54 +559,27 @@
 
 
   
-    <article id="post-ThreadLocal解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-day1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/22/ThreadLocal%E8%A7%A3%E6%9E%90/">ThreadLocal解析</a>
+      <a class="article-title" href="/2019/10/27/day1/">day1</a>
     </h1>
   
 
         
-        <a href="/2019/10/22/ThreadLocal%E8%A7%A3%E6%9E%90/" class="archive-article-date">
-  	<time datetime="2019-10-22T07:09:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
+        <a href="/2019/10/27/day1/" class="archive-article-date">
+  	<time datetime="2019-10-27T13:02:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>ThreadLocal 用于提供线程局部变量，它会为每个线程创建一个单独的变量副本，保证了多线程环境下数据的独立性，相当于线程的 private static 变量。</p>
-<p>其内部类 ThreadLocalMap 相当于一个 HashMap，是真正存储值得地方。ThreadLocalMap 存储在 Thread 类中，所以是线程私有的。</p>
-<h2 id="set-T-value"><a href="#set-T-value" class="headerlink" title="set(T value)"></a>set(T value)</h2><p><code>Thread.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ThreadLocal.ThreadLocalMap threadLocals = <span class="keyword">null</span>;</span><br></pre></td></tr></table></figure>
-
-<p><code>ThreadLocal.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">set</span><span class="params">(T value)</span> </span>&#123;</span><br><span class="line">    Thread t = Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map = getMap(t);</span><br><span class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>)</span><br><span class="line">        map.set(<span class="keyword">this</span>, value);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        createMap(t, value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>调用 ThreadLocal 类 的 set(T value) 方法设置存储的变量值时先获取当前线程内存储的 ThreadLocalHashMap，如果获取到的是 null，则调用 setInitialValue() 创建一个新的 ThreadLocalHashMap 并以当前 ThreadLocal 对象为键，传入的 value 为值进行初始化，然后赋值给当前线程的 threadLocals 变量，否则的话就以当前 ThreadLocal 对象为键，传入的 value 为值存储到获取到的 map 中。</p>
-<p><code>ThreadLocal.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ThreadLocalMap <span class="title">getMap</span><span class="params">(Thread t)</span> </span>&#123;    <span class="keyword">return</span> t.threadLocals;&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createMap</span><span class="params">(Thread t, T firstValue)</span> </span>&#123;</span><br><span class="line">    t.threadLocals = <span class="keyword">new</span> ThreadLocalMap(<span class="keyword">this</span>, firstValue);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="get"><a href="#get" class="headerlink" title="get()"></a>get()</h2><p><code>ThreadLocal.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> T <span class="title">get</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Thread t = Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map = getMap(t);</span><br><span class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>) &#123;</span><br><span class="line">        ThreadLocalMap.Entry e = map.getEntry(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">if</span> (e != <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line">            T result = (T)e.value;</span><br><span class="line">            <span class="keyword">return</span> result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> setInitialValue();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>同 set(T value)方法一样，先获取当前线程存储的 ThreadLocalMap 对象，如果获取到的是 null，说明还未调用 set(T value) 方法设置过值，则调用 setInitialValue() 方法。<br><code>ThreadLocal.java</code></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> T <span class="title">setInitialValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    T value = initialValue();</span><br><span class="line">    Thread t = Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map = getMap(t);</span><br><span class="line">    <span class="keyword">if</span> (map != <span class="keyword">null</span>)</span><br><span class="line">        map.set(<span class="keyword">this</span>, value);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        createMap(t, value);</span><br><span class="line">    <span class="keyword">return</span> value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>先获取当前线程存储的 ThreadLocalMap 对象，如果获取到的 map 对象是 null，则调用 createMap(t, value) 方法创建一个新的 ThreadLocalHashMap 并以当前 ThreadLocal 对象为键，传入的 value 为值进行初始化，然后赋值给当前线程的 threadLocals 变量。如果获取到的 map 对象不是 null，则调用 ThreadLocalMap 的 set(ThreadLocal&lt;?&gt; key, Object value) 方法进行更新。</p>
-<h2 id="remove"><a href="#remove" class="headerlink" title="remove()"></a>remove()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ThreadLocalMap m = getMap(Thread.currentThread());</span><br><span class="line">    <span class="keyword">if</span> (m != <span class="keyword">null</span>)</span><br><span class="line">        m.remove(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>先获取当前线程对应的 ThreadLocalMap 对象，然后删除以当前 ThreadLocal 对象为键的键值对。</p>
-<h2 id="内存泄漏问题"><a href="#内存泄漏问题" class="headerlink" title="内存泄漏问题"></a>内存泄漏问题</h2><p>在 ThreadLocalMap 的 set ()，get () 和 remove () 方法中，都有清除无效 Entry 的操作，这样做是为了降低内存泄漏发生的可能。</p>
-<p>Entry 中的 key 使用了弱引用的方式，这样做是为了降低内存泄漏发生的概率，但不能完全避免内存泄漏。</p>
-<p>这句话的意思好象是矛盾的，下面来分析一下。</p>
-<p>假设 Entry 的 key 没有使用弱引用的方式，而是使用了强引用：由于 ThreadLocalMap 的生命周期和当前线程一样长，那么当引用 ThreadLocal 的对象被回收后，由于 ThreadLocalMap 还持有 ThreadLocal 和对应 value 的强引用，ThreadLocal 和对应的 value 是不会被回收的，这就导致了内存泄漏。所以 Entry 以弱引用的方式避免了 ThreadLocal 没有被回收而导致的内存泄漏，但是此时 value 仍然是无法回收的，依然会导致内存泄漏。</p>
-<p><strong>ThreadLocalMap 已经考虑到这种情况，并且有一些防护措施：在调用 ThreadLocal 的 get ()，set () 和 remove () 的时候都会清除当前线程 ThreadLocalMap 中所有 key 为 null 的 value。这样可以降低内存泄漏发生的概率。所以我们在使用 ThreadLocal 的时候，每次用完 ThreadLocal 都调用 remove () 方法，清除数据，防止内存泄漏。</strong></p>
-<p>但是有可能一直不对 TheadLocalMap 对象进行更改。。</p>
+        <p>1~27，基础知识，讲了 Java 的基础使用。</p>
 
       
 
@@ -566,7 +593,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
         		</li>
       		
 		</ul>
@@ -576,7 +603,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/22/ThreadLocal%E8%A7%A3%E6%9E%90/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/27/day1/">展开全文 >></a>
         </p>
       
 
@@ -628,44 +655,12 @@
       
         <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>Throwable 可以用来表示任何可以作为异常抛出的类，分为两种： <strong>Error</strong>  和 <strong>Exception</strong>。其中 Error 用来表示 JVM 无法处理的错误，Exception 分为两种：</p>
 <ul>
-<li><strong>受检异常</strong>（checked exception）：需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复。<ol>
-<li>继续抛出(不建议,一直抛会到jvm处理)</li>
-<li>try catch</li>
-</ol>
-</li>
-<li><strong>非受检异常</strong> （unchecked exception/RuntimeException）：是程序运行时错误。<br>其处理方式有：<ol>
-<li>捕获 </li>
-<li>继续抛出</li>
-<li>不处理</li>
-</ol>
-</li>
-</ul>
-<p>若想区分受检异常和非受检异常，记住两点：异常是 Throwable 对象，而且异常主要分为两类，通过 Error 和Exception 子类标识。只要异常对象是 Error 类，就是非受检异常。Exception 类还有一个子类RuntimeException，RuntimeException 类的所有子类都属于非受检异常。除此之外，都是受检异常。</p>
-<p><strong>异常的分类：</strong><br>java.lang.Throwable</p>
+<li><p><strong>受检异常</strong>（checked exception）：需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复。</p>
 <ol>
-<li><p>Error 错误：JVM 内部的严重问题。无法恢复。程序人员不用处理。</p>
+<li><p>继续抛出(不建议,一直抛会到jvm处理)</p>
 </li>
-<li><p>Exception 异常：普通的问题。通过合理的处理，程序还可以回到正常执行流程。要求编程人员要进行处理。</p>
-</li>
-<li><p>RuntimeException（运行时异常）: 也叫非受检异常 (unchecked exception). 这类异常是编程人员的逻辑问题。应该承担责任。Java 编译器不进行强制要求处理。 也就是说，这类异常再程序中，可以进行处理，也可以不处理。</p>
-</li>
-<li><p>checked exception（受检异常）： 这类异常是由一些外部的偶然因素所引起的。Java 编译器强制要求处理。也就是说，程序必须进行对这类异常进行处理。</p>
-</li>
-</ol>
-<p><strong>常见异常：</strong></p>
-<ol>
-<li><p>非受检的：NullPointerException,ClassCastException,ArrayIndexsOutOfBoundsException,ArithmeticException (算术异常，除 0 溢出)</p>
-</li>
-<li><p>受检：Exception,FileNotFoundException,IOException,SQLException.</p>
-<p><img src="https://cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com/PPjwP.png" alt="img"> </p>
-</li>
-</ol>
-<p><strong>异常抛出</strong></p>
-<ol>
-<li>throws 用于抛出方法层次的异常，例如： public void test() throws SQLException, IOException {}</li>
-<li>throw 关键字通常用在方法体中，并且抛出一个异常对象。程序在执行到throw语句时立即停止，它后面的语句都不执行。</li>
-</ol>
-
+<li><p>try catch</p>
+        
       
 
       
@@ -802,8 +797,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h3><p>Windows 下的文件编码为 GBK，linux 下的文件编码默认是 UTF-8，所以名称或内容直接打开会乱码。</p>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p><strong>文件内容需要用到</strong><br>命令示例：iconv -f gbk -t utf8 file1 -o file2<br>其中<br>-f 后面跟的是原始文本编码。<br>-t 后跟的是要转换成的编码格式。<br>-o 后跟的是输出到哪个文件。<br><strong>文件名使用</strong> convmv<br>convmv -f gbk -t utf-8 -r –notest ./<br> -r 表示递归对子目录做处理。<br><strong>解压文件时</strong><br>unzip -O GBK xxx.zip</p>
-
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3>
+        
       
 
       
@@ -885,32 +880,7 @@
 <p>这是因为 “0000-00-00 00:00:00”在mysql中是作为一个特殊值存在的，但是在Java中， java.sql.Date 会被视为 不合法的值，被JVM认为格式不正确。</p>
 <p>解决办法：</p>
 <p>在jdbc的url加上   zeroDateTimeBehavior参数：</p>
-<p>datasource.url=jdbc:mysql://localhost:3306/pe?useUnicode=true&amp;characterEncoding=gbk &amp;zeroDateTimeBehavior=convertToNull</p>
-<p>对于值为0000-00-00   00:00:00（默认值）的纪录，根据不同的配置，会返回不同的结果：</p>
-<p>不配置：默认返回异常</p>
-<p>zeroDateTimeBehavior=round   0001-01-01   00:00:00.0</p>
-<p>zeroDateTimeBehavior=convertToNull   null</p>
-<p>但 这样有可能会报新的Exception：</p>
-<p>The reference to entity “characterEncoding” must end with the ‘;’ delimiter   </p>
-<p>其原因可能是在Properties文件或者xml文件中忘记进行特殊符号的转译了，</p>
-<p>jdbc:mysql://XXX:3306/diandi?useUnicode=true&amp;characterEncoding=UTF-8 &amp; zeroDateTimeBehavior=convertToNull</p>
-<p>需要改为：</p>
-<p>jdbc:mysql://XXX:3306/diandi?useUnicode=true&amp;characterEncoding=UTF-8 &amp; zeroDateTimeBehavior=convertToNull </p>
-<p>有以下几类字符要进行转义替换：</p>
-<p>&lt;</p>
-<p>&lt;</p>
-<p>小于号</p>
-<p>大于号</p>
-<p>&amp;</p>
-<p>&amp;</p>
-<p>和</p>
-<p>‘</p>
-<p>‘</p>
-<p>单引号</p>
-<p>“</p>
-<p>“</p>
-<p>双引号</p>
-
+        
       
 
       
@@ -923,75 +893,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/10/22/Value-0000-00-00-can-not-be-represented-as-java-sql-Date/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-eclipse启动报Removing-obsolete-files-from-server-错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/22/eclipse%E5%90%AF%E5%8A%A8%E6%8A%A5Removing-obsolete-files-from-server-%E9%94%99%E8%AF%AF/">eclipse启动报Removing obsolete files from server... 错误</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/22/eclipse%E5%90%AF%E5%8A%A8%E6%8A%A5Removing-obsolete-files-from-server-%E9%94%99%E8%AF%AF/" class="archive-article-date">
-  	<time datetime="2019-10-22T06:59:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一般是由于不正当的关闭eclipse</p>
-<ol>
-<li><p>找到你的tomcat的文件夹.找到里面的service.xml文件(路径Tomcat\conf\service.xml)</p>
-</li>
-<li><p>找到你的工作区间,<br>workspace.metadata.plugins\org.eclipse.wst.server.core\tmpX(x为1….N,具体看你项目)\conf<br>里找到service.xml 看看这个文件是否跟你的service.xml文件一样.<br>不一样则把这个2的eclipse里的临时文件替换成你的service.xml<br>这俩个文件要一致才能进行正常的eclipse启动tomcat.</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/22/eclipse%E5%90%AF%E5%8A%A8%E6%8A%A5Removing-obsolete-files-from-server-%E9%94%99%E8%AF%AF/">展开全文 >></a>
         </p>
       
 
@@ -1134,11 +1035,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1147,6 +1048,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

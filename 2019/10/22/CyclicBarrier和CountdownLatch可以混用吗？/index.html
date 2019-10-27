@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="11&#39;s Blog">
 <meta property="og:description" content="测试代码1234567891011121314151617181920212223242526272829public class Example &amp;#123;    public static void main(String[] args) throws InterruptedException &amp;#123;        final int totalThread = 10;">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-22T07:16:16.515Z">
+<meta property="og:updated_time" content="2019-10-27T13:27:37.472Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="11&#39;s Blog" type="application/atom+xml">
@@ -158,6 +158,10 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  <i class="fa fa-thumb-tack"></i>
+  <font color=7D26CD>置顶</font>
+  <span class="post-meta-divider">|</span>
+
 <article id="post-CyclicBarrier和CountdownLatch可以混用吗？" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -178,7 +182,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> totalThread = <span class="number">10</span>;</span><br><span class="line">        CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(totalThread);</span><br><span class="line">        CyclicBarrier cyclicBarrier = <span class="keyword">new</span> CyclicBarrier(totalThread);</span><br><span class="line">        ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; totalThread; i++) &#123;</span><br><span class="line">            executorService.execute(() -&gt; &#123;</span><br><span class="line">                System.out.println(<span class="string">"run.."</span>);</span><br><span class="line">                countDownLatch.countDown();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"cyclicBarrierBefore.."</span>);</span><br><span class="line">                    cyclicBarrier.await();</span><br><span class="line">                    System.out.println(<span class="string">"cyclicBarrierAfter.."</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"countDownLatchBefore.."</span>);</span><br><span class="line">        countDownLatch.await();</span><br><span class="line">        System.out.println(<span class="string">"countDownLatchAfter.."</span>);</span><br><span class="line">        System.out.println(<span class="string">"end"</span>);</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> totalThread = <span class="number">10</span>;</span><br><span class="line">        CountDownLatch countDownLatch = <span class="keyword">new</span> CountDownLatch(totalThread);</span><br><span class="line">        CyclicBarrier cyclicBarrier = <span class="keyword">new</span> CyclicBarrier(totalThread);</span><br><span class="line">        ExecutorService executorService = Executors.newCachedThreadPool();</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; totalThread; i++) &#123;</span><br><span class="line">            executorService.execute(() -&gt; &#123;</span><br><span class="line">                System.out.println(<span class="string">"run.."</span>);</span><br><span class="line">                countDownLatch.countDown();</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    System.out.println(<span class="string">"cyclicBarrierBefore.."</span>);</span><br><span class="line">                    cyclicBarrier.await();</span><br><span class="line">                    System.out.println(<span class="string">"cyclicBarrierAfter.."</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"countDownLatchBefore.."</span>);</span><br><span class="line">        countDownLatch.await();</span><br><span class="line">        System.out.println(<span class="string">"countDownLatchAfter.."</span>);</span><br><span class="line">        System.out.println(<span class="string">"end"</span>);</span><br><span class="line">        executorService.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a> 
 
 <h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">run..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">run..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">countDownLatchBefore..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">run..</span><br><span class="line">cyclicBarrierBefore..</span><br><span class="line">countDownLatchAfter..</span><br><span class="line">end</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br><span class="line">cyclicBarrierAfter..</span><br></pre></td></tr></table></figure>
 
@@ -189,6 +195,11 @@
       
     </div>
     <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
       
       
 	<div class="article-tag tagcloud">
@@ -266,6 +277,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2019/10/27/day1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          day1
+        
+      </div>
+    </a>
+  
   
     <a href="/2019/10/22/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8A%A5OOMERROR%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">服务器运行程序报OOMERROR解决过程</div>
@@ -287,6 +307,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#测试代码"><span class="toc-number">1.</span> <span class="toc-text">测试代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#运行结果"><span class="toc-number">2.</span> <span class="toc-text">运行结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#结论"><span class="toc-number">3.</span> <span class="toc-text">结论</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -410,11 +443,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -423,6 +456,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>

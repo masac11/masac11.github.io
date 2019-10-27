@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java异常体系 | 11&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="异常Throwable 可以用来表示任何可以作为异常抛出的类，分为两种： Error  和 Exception。其中 Error 用来表示 JVM 无法处理的错误，Exception 分为两种：  受检异常（checked exception）：需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复。 继续抛出(不建议,一直抛会到jvm处理) try catch   非受检异常 （">
+  <meta name="description" content="异常Throwable 可以用来表示任何可以作为异常抛出的类，分为两种： Error  和 Exception。其中 Error 用来表示 JVM 无法处理的错误，Exception 分为两种：  受检异常（checked exception）：需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复。  继续抛出(不建议,一直抛会到jvm处理)  try catch">
 <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java异常体系">
 <meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;22&#x2F;Java%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB&#x2F;index.html">
 <meta property="og:site_name" content="11&#39;s Blog">
-<meta property="og:description" content="异常Throwable 可以用来表示任何可以作为异常抛出的类，分为两种： Error  和 Exception。其中 Error 用来表示 JVM 无法处理的错误，Exception 分为两种：  受检异常（checked exception）：需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复。 继续抛出(不建议,一直抛会到jvm处理) try catch   非受检异常 （">
+<meta property="og:description" content="异常Throwable 可以用来表示任何可以作为异常抛出的类，分为两种： Error  和 Exception。其中 Error 用来表示 JVM 无法处理的错误，Exception 分为两种：  受检异常（checked exception）：需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复。  继续抛出(不建议,一直抛会到jvm处理)  try catch">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https:&#x2F;&#x2F;cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com&#x2F;PPjwP.png">
-<meta property="og:updated_time" content="2019-10-22T07:08:59.387Z">
+<meta property="og:updated_time" content="2019-10-27T13:24:58.836Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;cs-notes-1256109796.cos.ap-guangzhou.myqcloud.com&#x2F;PPjwP.png">
   
@@ -182,12 +182,16 @@
       
         <h2 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h2><p>Throwable 可以用来表示任何可以作为异常抛出的类，分为两种： <strong>Error</strong>  和 <strong>Exception</strong>。其中 Error 用来表示 JVM 无法处理的错误，Exception 分为两种：</p>
 <ul>
-<li><strong>受检异常</strong>（checked exception）：需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复。<ol>
-<li>继续抛出(不建议,一直抛会到jvm处理)</li>
-<li>try catch</li>
+<li><p><strong>受检异常</strong>（checked exception）：需要用 try…catch… 语句捕获并进行处理，并且可以从异常中恢复。</p>
+<ol>
+<li><p>继续抛出(不建议,一直抛会到jvm处理)</p>
+</li>
+<li><p>try catch</p>
+<a id="more"></a> </li>
 </ol>
 </li>
-<li><strong>非受检异常</strong> （unchecked exception/RuntimeException）：是程序运行时错误。<br>其处理方式有：<ol>
+<li><p><strong>非受检异常</strong> （unchecked exception/RuntimeException）：是程序运行时错误。<br>其处理方式有：</p>
+<ol>
 <li>捕获 </li>
 <li>继续抛出</li>
 <li>不处理</li>
@@ -333,6 +337,19 @@
         </div>
         
         
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#异常"><span class="toc-number">1.</span> <span class="toc-text">异常</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
     </div>
 </aside>
 
@@ -455,11 +472,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -468,6 +485,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
