@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/10/27/day1/</loc>
+    
+    <lastmod>2019-10-29T12:30:49.644Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/10/29/Redis%25E5%259F%25BA%25E6%259C%25AC%25E6%2595%25B0%25E6%258D%25AE%25E7%25B1%25BB%25E5%259E%258B%25E5%258F%258A%25E4%25BD%25BF%25E7%2594%25A8%25E5%259C%25BA%25E6%2599%25AF/</loc>
     
     <lastmod>2019-10-29T12:29:03.782Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://yoursite.com/2018/11/03/%25E8%25A2%25ABiis%25E5%258D%25A0%25E7%2594%25A880%25E7%25AB%25AF%25E5%258F%25A3%25E7%259A%2584%25E5%2587%25A0%25E7%25A7%258D%25E8%25A7%25A3%25E5%2586%25B3%25E5%258A%259E%25E6%25B3%2595/</loc>
     
     <lastmod>2019-10-27T13:23:40.680Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2019/10/27/day1/</loc>
-    
-    <lastmod>2019-10-27T13:07:30.235Z</lastmod>
     
   </url>
   
