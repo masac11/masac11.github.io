@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://yoursite.com/2019/10/26/LinuxCPU%E4%BD%BF%E7%94%A8%E7%8E%87%E8%BF%87%E9%AB%98%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</loc>
+    <lastmod>2019-10-29</lastmod>
+  </url>  <url>
     <loc>http://yoursite.com/2019/10/27/volatile%E8%A7%A3%E6%9E%90/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
@@ -41,9 +44,6 @@
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2019/10/22/%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%E6%8A%A5OOMERROR%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/</loc>
-    <lastmod>2019-10-29</lastmod>
-  </url>  <url>
-    <loc>http://yoursite.com/2019/10/26/LinuxCPU%E4%BD%BF%E7%94%A8%E7%8E%87%E8%BF%87%E9%AB%98%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/</loc>
     <lastmod>2019-10-29</lastmod>
   </url>  <url>
     <loc>http://yoursite.com/2018/11/03/%E8%A2%ABiis%E5%8D%A0%E7%94%A880%E7%AB%AF%E5%8F%A3%E7%9A%84%E5%87%A0%E7%A7%8D%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/</loc>

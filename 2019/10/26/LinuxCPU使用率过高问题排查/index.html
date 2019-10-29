@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="11&#39;s Blog">
 <meta property="og:description" content="死循环模仿占用率过高的情况。 12345678public class DeadLock &amp;#123;    public static void test() &amp;#123;      for(;;)&amp;#123;&amp;#125;    &amp;#125;    public static void main(String args[]) &amp;#123;       test();    &amp;#125;&amp;#12">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-10-29T13:56:30.031Z">
+<meta property="og:updated_time" content="2019-10-29T14:00:23.462Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="11&#39;s Blog" type="application/atom+xml">
@@ -182,11 +182,8 @@
 <li><p>死循环模仿占用率过高的情况。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadLock</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">for</span>(;;)&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</span><br><span class="line">       test();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-
-
+<a id="more"></a> 
 </li>
-</ol>
-<ol start="2">
 <li><p>使用 top 命令查看系统中各个进程的资源占用状况，默认是按 CPU 占用率由高到低排序，如不是，top 下输入大写的 P。或者输入 jps 查看 Java 创建的进程，不过这样不能确定哪一个进程占用的 CPU 高。</p>
 <p>查看到的结果如图，记录下 PID。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">27667 root      20   0 2250848  18444  10504 S 99.9  1.8  12:50.34 java</span><br></pre></td></tr></table></figure>
