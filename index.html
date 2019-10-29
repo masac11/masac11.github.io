@@ -422,103 +422,8 @@
 <ol>
 <li>String：字符串。</li>
 <li>Hash：哈希。</li>
-<li>List：链表。</li>
-<li>Set：集合。</li>
-<li>Sorted set：有序集合。</li>
-<li>bitmap。</li>
-<li>HyperLogLog。</li>
-<li>Streams。</li>
-</ol>
-<blockquote>
-<p>Redis is an in-memory database that persists on disk. The data model is key-value, but many different kind of values are supported: Strings, Lists, Sets, Sorted Sets, Hashes, Streams, HyperLogLogs, Bitmaps. </p>
-</blockquote>
-<p>Redis 内部使用 Redis Object  来实现所有的数据类型。</p>
-<blockquote>
-<p> As you can see in the client structure above, arguments in a command are described as <code>robj</code> structures. The following is the full <code>robj</code> structure, which defines a <em>Redis object</em>: </p>
-<p> Basically this structure can represent all the basic Redis data types like strings, lists, sets, sorted sets and so forth.  </p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">redisObject</span> &#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> type:<span class="number">4</span>;<span class="comment">//类型</span></span><br><span class="line">    <span class="keyword">unsigned</span> encoding:<span class="number">4</span>;<span class="comment">//编码</span></span><br><span class="line">    <span class="keyword">unsigned</span> lru:LRU_BITS; <span class="comment">/* lru time (relative to server.lruclock) */</span></span><br><span class="line">    <span class="keyword">int</span> refcount;<span class="comment">//引用计数</span></span><br><span class="line">    <span class="keyword">void</span> *ptr;<span class="comment">//指向底层数据结构的指针</span></span><br><span class="line">&#125; robj;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Binary-safe-strings"><a href="#Binary-safe-strings" class="headerlink" title="Binary-safe strings"></a>Binary-safe strings</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Redis 的 key 是 二进制安全的，这意味着你可以使用任何二进制序列当作 Redis 的 key，即使是一张图片。空字符串也是合法的 key。</p>
-<p>key 所允许的最大大小为 512 MB。</p>
-<p>INCR 命令将 String 类型解析成 Integer 类型，并自增 1，这个操作是原子的。</p>
-<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">set</span> mykey somevalue</span><br><span class="line">OK</span><br><span class="line">&gt; get mykey</span><br><span class="line"><span class="string">"somevalue"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ol>
-<li>计数。</li>
-<li>存储数据行字段。</li>
-</ol>
-<h2 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h2><blockquote>
-<p> Lists:  collections of string elements sorted according to the order of insertion. They are basically <em>linked lists</em>. </p>
-</blockquote>
-<h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>Redis Lists 是用链表实现的，和数组相比保证了插入的速度，但是访问的速度不是那么快（和被访问元素的索引位置有关）。</p>
-<h3 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h3><p>lpush 命令将一个元素添加到链表头，rpush命令将一个元素添加到链表尾。lpop，rpop 类似。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; rpush mylist A</span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; rpush mylist B</span><br><span class="line">(integer) <span class="number">2</span></span><br><span class="line">&gt; lpush mylist first</span><br><span class="line">(integer) <span class="number">3</span></span><br><span class="line">&gt; lrange mylist <span class="number">0</span> <span class="number">-1</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"first"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"A"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"B"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="场景-1"><a href="#场景-1" class="headerlink" title="场景"></a>场景</h3><ol>
-<li>记住用户发布到社交网络上的最新更新。</li>
-<li>生产者消费者，类似消息队列。</li>
-</ol>
-<h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><blockquote>
-<p>  Sets:  collections of unique, unsorted string elements. </p>
-</blockquote>
-<h3 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h3><p>无序去重的集合， 还可以对集合进行许多其他操作，例如测试给定元素是否已存在，执行多个集合之间的交集，并集或差等。</p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; sadd myset <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line">(integer) <span class="number">3</span></span><br><span class="line">&gt; smembers myset</span><br><span class="line"><span class="number">1.</span> <span class="number">3</span></span><br><span class="line"><span class="number">2.</span> <span class="number">1</span></span><br><span class="line"><span class="number">3.</span> <span class="number">2</span></span><br><span class="line">&gt; sismember myset <span class="number">3</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; sismember myset <span class="number">30</span></span><br><span class="line">(integer) <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="场景-2"><a href="#场景-2" class="headerlink" title="场景"></a>场景</h3><ol>
-<li>给文章打标签。</li>
-<li>发牌。</li>
-<li>共同关注。</li>
-</ol>
-<h2 id="Sorted-sets"><a href="#Sorted-sets" class="headerlink" title="Sorted sets"></a>Sorted sets</h2><blockquote>
-<p> Sorted sets, similar to Sets but where every string element is associated to a floating number value, called <em>score</em>. The elements are always taken sorted by their score, so unlike Sets it is possible to retrieve a range of elements (for example you may ask: give me the top 10, or the bottom 10). </p>
-</blockquote>
-<p>Sorted sets 类似于 set 和 hash 之间的混合。像 set 一样，sorted set 由唯一的，非重复的字符串元素组成，虽然集合内的元素没有排序，但是 sorted set 中的每个元素都与一个称为 score 的浮点值相关联（这就是为什么该类型也类似于哈希的原因，因为每个元素都映射到一个值）。</p>
-<p>它们根据以下规则排序：</p>
-<p>如果 A 和 B 是两个具有不同分数的元素，那么如果 A.score 是 &gt; B.score，则A &gt; B。</p>
-<p>如果 A 和 B 的分数完全相同，那么如果 A 字符串在字典上大于 B 字符串，则A &gt; B。</p>
-<p>A 和 B 字符串不能相等，因为排序集仅具有唯一元素。</p>
-<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; zadd hackers <span class="number">1940</span> <span class="string">"Alan Kay"</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; zadd hackers <span class="number">1957</span> <span class="string">"Sophie Wilson"</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; zadd hackers <span class="number">1953</span> <span class="string">"Richard Stallman"</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; zrange hackers <span class="number">0</span> <span class="number">-1</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"Alan Turing"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"Richard Stallman"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"Sophie Wilson"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="场景-3"><a href="#场景-3" class="headerlink" title="场景"></a>场景</h3><ol>
-<li>排行榜 O(log(N))  时间复杂度。</li>
-</ol>
-<h2 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h2><blockquote>
-<p> Hashes, which are maps composed of fields associated with values. Both the field and the value are strings. This is very similar to Ruby or Python hashes. </p>
-</blockquote>
-<h3 id="介绍-3"><a href="#介绍-3" class="headerlink" title="介绍"></a>介绍</h3><p>查找快速</p>
-<h3 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; hmset user:<span class="number">1000</span> username antirez birthyear <span class="number">1977</span> verified <span class="number">1</span></span><br><span class="line">OK</span><br><span class="line">&gt; hget user:<span class="number">1000</span> username</span><br><span class="line"><span class="string">"antirez"</span></span><br><span class="line">&gt; hget user:<span class="number">1000</span> birthyear</span><br><span class="line"><span class="string">"1977"</span></span><br><span class="line">&gt; hgetall user:<span class="number">1000</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"username"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"antirez"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"birthyear"</span></span><br><span class="line"><span class="number">4</span>) <span class="string">"1977"</span></span><br><span class="line"><span class="number">5</span>) <span class="string">"verified"</span></span><br><span class="line"><span class="number">6</span>) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="场景-4"><a href="#场景-4" class="headerlink" title="场景"></a>场景</h3><ol>
-<li>存储对象。</li>
-</ol>
-<h2 id="Bit-arrays-or-simply-bitmaps"><a href="#Bit-arrays-or-simply-bitmaps" class="headerlink" title="Bit arrays (or simply bitmaps)"></a>Bit arrays (or simply bitmaps)</h2><blockquote>
-<p> Bit arrays (or simply bitmaps): it is possible, using special commands, to handle String values like an array of bits: you can set and clear individual bits, count all the bits set to 1, find the first set or unset bit, and so forth. </p>
-</blockquote>
-<p>位图不是实际的数据类型，而是在 String 类型上定义的一组面向位的操作。由于字符串是二进制安全Blob，并且最大长度为512 MB，因此可设置多达 2^32 个不同的位。</p>
-<p>位操作分为两类：常量时间的单个位操作（例如将一个位设置为1或0或获取其值），以及对位组的操作，例如计算给定位范围内 1 的数量。</p>
-<p>位图的最大优点之一是它们在存储信息时可以节省大量空间。</p>
-<p>例如，在以增量用户ID表示不同用户的系统中，仅使用512 MB内存就可以记住40亿用户的一位信息（例如，判断用户是否要接收新闻通讯）。</p>
-<h3 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; setbit key <span class="number">10</span> <span class="number">1</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; getbit key <span class="number">10</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; getbit key <span class="number">11</span></span><br><span class="line">(integer) <span class="number">0</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="场景-5"><a href="#场景-5" class="headerlink" title="场景"></a>场景</h3><ol>
-<li>存储与对象 ID 相关联的布尔信息。（用户在线状态，用户签到等）</li>
-<li>各种数据量大的统计。</li>
-</ol>
-<h2 id="HyperLogLogs"><a href="#HyperLogLogs" class="headerlink" title="HyperLogLogs"></a>HyperLogLogs</h2><blockquote>
-<p> HyperLogLogs: this is a probabilistic data structure which is used in order to estimate the cardinality of a set. Don’t be scared, it is simpler than it seems… See later in the HyperLogLog section of this tutorial. </p>
-</blockquote>
-<h3 id="介绍-4"><a href="#介绍-4" class="headerlink" title="介绍"></a>介绍</h3><p>HyperLogLog是一种概率数据结构，用于对唯一事物进行计数，结果有一定的错误率，能节约大量内存。</p>
-<h3 id="使用-4"><a href="#使用-4" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; pfadd hll a b c d</span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; pfcount hll</span><br><span class="line">(integer) <span class="number">4</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="场景-6"><a href="#场景-6" class="headerlink" title="场景"></a>场景</h3><ol>
-<li>统计，不需要详细的数据。</li>
-</ol>
-<h2 id="Streams"><a href="#Streams" class="headerlink" title="Streams"></a>Streams</h2><blockquote>
-<p> Streams: append-only collections of map-like entries that provide an abstract log data type. They are covered in depth in the <a href="https://redis.io/topics/streams-intro" target="_blank" rel="noopener">Introduction to Redis Streams</a>. </p>
-</blockquote>
-<h2 id="介绍-5"><a href="#介绍-5" class="headerlink" title="介绍"></a>介绍</h2><p> Redis Streams是一种在内存中的抽象数据类型 ， 像日志文件一样，通常实现为仅追加模式打开的文件 。</p>
-
+<li>List：链表。
+        
       
 
       
@@ -708,80 +613,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/10/22/CyclicBarrier%E5%92%8CCountdownLatch%E5%8F%AF%E4%BB%A5%E6%B7%B7%E7%94%A8%E5%90%97%EF%BC%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-day1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/27/day1/">day1</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/27/day1/" class="archive-article-date">
-  	<time datetime="2019-10-27T13:02:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>感觉不错，慢慢学。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/27/day1/">展开全文 >></a>
         </p>
       
 
@@ -1029,6 +860,77 @@
 
 
   
+    <article id="post-Value-0000-00-00-can-not-be-represented-as-java-sql-Date" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/22/Value-0000-00-00-can-not-be-represented-as-java-sql-Date/">Value &#39;0000-00-00&#39; can not be represented as java.sql.Date</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/22/Value-0000-00-00-can-not-be-represented-as-java-sql-Date/" class="archive-article-date">
+  	<time datetime="2019-10-22T07:03:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.sql.SQLException: Value <span class="string">'0000-00-00 00:00:00'</span> can not be represented as java.sql.Timestamp</span><br></pre></td></tr></table></figure>
+
+<p>问题描述， 在java应用程序中，数据表中有记录的time字段（属性为timestamp）其值为：“0000-00-00 00:00:00”</p>
+<p>程序使用select 语句从中取数据时出现以下异常：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.sql.SQLException:Value <span class="string">'0000-00-00'</span> can not be represented as java.sql.Date</span><br></pre></td></tr></table></figure>
+
+<p>这是因为 “0000-00-00 00:00:00”在mysql中是作为一个特殊值存在的，但是在Java中， java.sql.Date 会被视为 不合法的值，被JVM认为格式不正确。</p>
+<p>解决办法：</p>
+<p>在jdbc的url加上   zeroDateTimeBehavior参数：</p>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/22/Value-0000-00-00-can-not-be-represented-as-java-sql-Date/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1154,15 +1056,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">云服务器</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">云服务器</a>
               </li>
             
             <div class="clearfix"></div>

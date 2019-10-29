@@ -155,77 +155,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Value-0000-00-00-can-not-be-represented-as-java-sql-Date" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/22/Value-0000-00-00-can-not-be-represented-as-java-sql-Date/">Value &#39;0000-00-00&#39; can not be represented as java.sql.Date</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/22/Value-0000-00-00-can-not-be-represented-as-java-sql-Date/" class="archive-article-date">
-  	<time datetime="2019-10-22T07:03:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.sql.SQLException: Value <span class="string">'0000-00-00 00:00:00'</span> can not be represented as java.sql.Timestamp</span><br></pre></td></tr></table></figure>
-
-<p>问题描述， 在java应用程序中，数据表中有记录的time字段（属性为timestamp）其值为：“0000-00-00 00:00:00”</p>
-<p>程序使用select 语句从中取数据时出现以下异常：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.sql.SQLException:Value <span class="string">'0000-00-00'</span> can not be represented as java.sql.Date</span><br></pre></td></tr></table></figure>
-
-<p>这是因为 “0000-00-00 00:00:00”在mysql中是作为一个特殊值存在的，但是在Java中， java.sql.Date 会被视为 不合法的值，被JVM认为格式不正确。</p>
-<p>解决办法：</p>
-<p>在jdbc的url加上   zeroDateTimeBehavior参数：</p>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/22/Value-0000-00-00-can-not-be-represented-as-java-sql-Date/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-eclipse启动报Removing-obsolete-files-from-server-错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -951,15 +880,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color5">云服务器</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">云服务器</a>
               </li>
             
             <div class="clearfix"></div>
