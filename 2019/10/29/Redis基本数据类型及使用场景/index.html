@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 云服务器 | 11&#39;s Blog</title>
+  <title>Redis基本数据类型及使用场景 | 11&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="11&#39;s Blog">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8&#x2F;index.html">
+  <meta name="description" content="数据类型八种数据类型  String：字符串。 Hash：哈希。 List：链表。 Set：集合。 Sorted set：有序集合。 bitmap。 HyperLogLog。 Streams。   Redis is an in-memory database that persists on disk. The data model is key-value, but many different">
+<meta name="keywords" content="Redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis基本数据类型及使用场景">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;29&#x2F;Redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF&#x2F;index.html">
 <meta property="og:site_name" content="11&#39;s Blog">
+<meta property="og:description" content="数据类型八种数据类型  String：字符串。 Hash：哈希。 List：链表。 Set：集合。 Sorted set：有序集合。 bitmap。 HyperLogLog。 Streams。   Redis is an in-memory database that persists on disk. The data model is key-value, but many different">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-29T12:29:03.782Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="11&#39;s Blog" type="application/atom+xml">
@@ -154,59 +158,267 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+  <i class="fa fa-thumb-tack"></i>
+  <font color=7D26CD>置顶</font>
+  <span class="post-meta-divider">|</span>
+
+<article id="post-Redis基本数据类型及使用场景" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/02/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E5%89%AA%E5%88%87%E6%9D%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2018-11-02T06:38:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E7%AA%81%E7%84%B6%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E5%89%AA%E5%88%87%E6%9D%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">云服务器远程桌面突然无法使用剪切板的解决方法</a>
+    <h1 class="article-title" itemprop="name">
+      Redis基本数据类型及使用场景
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/10/29/Redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" class="archive-article-date">
+  	<time datetime="2019-10-29T12:28:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p>八种数据类型</p>
+<ol>
+<li>String：字符串。</li>
+<li>Hash：哈希。</li>
+<li>List：链表。</li>
+<li>Set：集合。</li>
+<li>Sorted set：有序集合。</li>
+<li>bitmap。</li>
+<li>HyperLogLog。</li>
+<li>Streams。</li>
+</ol>
+<blockquote>
+<p>Redis is an in-memory database that persists on disk. The data model is key-value, but many different kind of values are supported: Strings, Lists, Sets, Sorted Sets, Hashes, Streams, HyperLogLogs, Bitmaps. </p>
+</blockquote>
+<p>Redis 内部使用 Redis Object  来实现所有的数据类型。</p>
+<blockquote>
+<p> As you can see in the client structure above, arguments in a command are described as <code>robj</code> structures. The following is the full <code>robj</code> structure, which defines a <em>Redis object</em>: </p>
+<p> Basically this structure can represent all the basic Redis data types like strings, lists, sets, sorted sets and so forth.  </p>
+</blockquote>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">redisObject</span> &#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> type:<span class="number">4</span>;<span class="comment">//类型</span></span><br><span class="line">    <span class="keyword">unsigned</span> encoding:<span class="number">4</span>;<span class="comment">//编码</span></span><br><span class="line">    <span class="keyword">unsigned</span> lru:LRU_BITS; <span class="comment">/* lru time (relative to server.lruclock) */</span></span><br><span class="line">    <span class="keyword">int</span> refcount;<span class="comment">//引用计数</span></span><br><span class="line">    <span class="keyword">void</span> *ptr;<span class="comment">//指向底层数据结构的指针</span></span><br><span class="line">&#125; robj;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Binary-safe-strings"><a href="#Binary-safe-strings" class="headerlink" title="Binary-safe strings"></a>Binary-safe strings</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>Redis 的 key 是 二进制安全的，这意味着你可以使用任何二进制序列当作 Redis 的 key，即使是一张图片。空字符串也是合法的 key。</p>
+<p>key 所允许的最大大小为 512 MB。</p>
+<p>INCR 命令将 String 类型解析成 Integer 类型，并自增 1，这个操作是原子的。</p>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">set</span> mykey somevalue</span><br><span class="line">OK</span><br><span class="line">&gt; get mykey</span><br><span class="line"><span class="string">"somevalue"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>计数。</li>
+<li>存储数据行字段。</li>
+</ol>
+<h2 id="Lists"><a href="#Lists" class="headerlink" title="Lists"></a>Lists</h2><blockquote>
+<p> Lists:  collections of string elements sorted according to the order of insertion. They are basically <em>linked lists</em>. </p>
+</blockquote>
+<h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>Redis Lists 是用链表实现的，和数组相比保证了插入的速度，但是访问的速度不是那么快（和被访问元素的索引位置有关）。</p>
+<h3 id="命令-1"><a href="#命令-1" class="headerlink" title="命令"></a>命令</h3><p>lpush 命令将一个元素添加到链表头，rpush命令将一个元素添加到链表尾。lpop，rpop 类似。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; rpush mylist A</span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; rpush mylist B</span><br><span class="line">(integer) <span class="number">2</span></span><br><span class="line">&gt; lpush mylist first</span><br><span class="line">(integer) <span class="number">3</span></span><br><span class="line">&gt; lrange mylist <span class="number">0</span> <span class="number">-1</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"first"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"A"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"B"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景-1"><a href="#场景-1" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>记住用户发布到社交网络上的最新更新。</li>
+<li>生产者消费者，类似消息队列。</li>
+</ol>
+<h2 id="Sets"><a href="#Sets" class="headerlink" title="Sets"></a>Sets</h2><blockquote>
+<p>  Sets:  collections of unique, unsorted string elements. </p>
+</blockquote>
+<h3 id="介绍-2"><a href="#介绍-2" class="headerlink" title="介绍"></a>介绍</h3><p>无序去重的集合， 还可以对集合进行许多其他操作，例如测试给定元素是否已存在，执行多个集合之间的交集，并集或差等。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; sadd myset <span class="number">1</span> <span class="number">2</span> <span class="number">3</span></span><br><span class="line">(integer) <span class="number">3</span></span><br><span class="line">&gt; smembers myset</span><br><span class="line"><span class="number">1.</span> <span class="number">3</span></span><br><span class="line"><span class="number">2.</span> <span class="number">1</span></span><br><span class="line"><span class="number">3.</span> <span class="number">2</span></span><br><span class="line">&gt; sismember myset <span class="number">3</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; sismember myset <span class="number">30</span></span><br><span class="line">(integer) <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景-2"><a href="#场景-2" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>给文章打标签。</li>
+<li>发牌。</li>
+<li>共同关注。</li>
+</ol>
+<h2 id="Sorted-sets"><a href="#Sorted-sets" class="headerlink" title="Sorted sets"></a>Sorted sets</h2><blockquote>
+<p> Sorted sets, similar to Sets but where every string element is associated to a floating number value, called <em>score</em>. The elements are always taken sorted by their score, so unlike Sets it is possible to retrieve a range of elements (for example you may ask: give me the top 10, or the bottom 10). </p>
+</blockquote>
+<p>Sorted sets 类似于 set 和 hash 之间的混合。像 set 一样，sorted set 由唯一的，非重复的字符串元素组成，虽然集合内的元素没有排序，但是 sorted set 中的每个元素都与一个称为 score 的浮点值相关联（这就是为什么该类型也类似于哈希的原因，因为每个元素都映射到一个值）。</p>
+<p>它们根据以下规则排序：</p>
+<p>如果 A 和 B 是两个具有不同分数的元素，那么如果 A.score 是 &gt; B.score，则A &gt; B。</p>
+<p>如果 A 和 B 的分数完全相同，那么如果 A 字符串在字典上大于 B 字符串，则A &gt; B。</p>
+<p>A 和 B 字符串不能相等，因为排序集仅具有唯一元素。</p>
+<h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; zadd hackers <span class="number">1940</span> <span class="string">"Alan Kay"</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; zadd hackers <span class="number">1957</span> <span class="string">"Sophie Wilson"</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; zadd hackers <span class="number">1953</span> <span class="string">"Richard Stallman"</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; zrange hackers <span class="number">0</span> <span class="number">-1</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"Alan Turing"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"Richard Stallman"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"Sophie Wilson"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景-3"><a href="#场景-3" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>排行榜 O(log(N))  时间复杂度。</li>
+</ol>
+<h2 id="Hashes"><a href="#Hashes" class="headerlink" title="Hashes"></a>Hashes</h2><blockquote>
+<p> Hashes, which are maps composed of fields associated with values. Both the field and the value are strings. This is very similar to Ruby or Python hashes. </p>
+</blockquote>
+<h3 id="介绍-3"><a href="#介绍-3" class="headerlink" title="介绍"></a>介绍</h3><p>查找快速</p>
+<h3 id="使用-2"><a href="#使用-2" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; hmset user:<span class="number">1000</span> username antirez birthyear <span class="number">1977</span> verified <span class="number">1</span></span><br><span class="line">OK</span><br><span class="line">&gt; hget user:<span class="number">1000</span> username</span><br><span class="line"><span class="string">"antirez"</span></span><br><span class="line">&gt; hget user:<span class="number">1000</span> birthyear</span><br><span class="line"><span class="string">"1977"</span></span><br><span class="line">&gt; hgetall user:<span class="number">1000</span></span><br><span class="line"><span class="number">1</span>) <span class="string">"username"</span></span><br><span class="line"><span class="number">2</span>) <span class="string">"antirez"</span></span><br><span class="line"><span class="number">3</span>) <span class="string">"birthyear"</span></span><br><span class="line"><span class="number">4</span>) <span class="string">"1977"</span></span><br><span class="line"><span class="number">5</span>) <span class="string">"verified"</span></span><br><span class="line"><span class="number">6</span>) <span class="string">"1"</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景-4"><a href="#场景-4" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>存储对象。</li>
+</ol>
+<h2 id="Bit-arrays-or-simply-bitmaps"><a href="#Bit-arrays-or-simply-bitmaps" class="headerlink" title="Bit arrays (or simply bitmaps)"></a>Bit arrays (or simply bitmaps)</h2><blockquote>
+<p> Bit arrays (or simply bitmaps): it is possible, using special commands, to handle String values like an array of bits: you can set and clear individual bits, count all the bits set to 1, find the first set or unset bit, and so forth. </p>
+</blockquote>
+<p>位图不是实际的数据类型，而是在 String 类型上定义的一组面向位的操作。由于字符串是二进制安全Blob，并且最大长度为512 MB，因此可设置多达 2^32 个不同的位。</p>
+<p>位操作分为两类：常量时间的单个位操作（例如将一个位设置为1或0或获取其值），以及对位组的操作，例如计算给定位范围内 1 的数量。</p>
+<p>位图的最大优点之一是它们在存储信息时可以节省大量空间。</p>
+<p>例如，在以增量用户ID表示不同用户的系统中，仅使用512 MB内存就可以记住40亿用户的一位信息（例如，判断用户是否要接收新闻通讯）。</p>
+<h3 id="使用-3"><a href="#使用-3" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; setbit key <span class="number">10</span> <span class="number">1</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; getbit key <span class="number">10</span></span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; getbit key <span class="number">11</span></span><br><span class="line">(integer) <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景-5"><a href="#场景-5" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>存储与对象 ID 相关联的布尔信息。（用户在线状态，用户签到等）</li>
+<li>各种数据量大的统计。</li>
+</ol>
+<h2 id="HyperLogLogs"><a href="#HyperLogLogs" class="headerlink" title="HyperLogLogs"></a>HyperLogLogs</h2><blockquote>
+<p> HyperLogLogs: this is a probabilistic data structure which is used in order to estimate the cardinality of a set. Don’t be scared, it is simpler than it seems… See later in the HyperLogLog section of this tutorial. </p>
+</blockquote>
+<h3 id="介绍-4"><a href="#介绍-4" class="headerlink" title="介绍"></a>介绍</h3><p>HyperLogLog是一种概率数据结构，用于对唯一事物进行计数，结果有一定的错误率，能节约大量内存。</p>
+<h3 id="使用-4"><a href="#使用-4" class="headerlink" title="使用"></a>使用</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; pfadd hll a b c d</span><br><span class="line">(integer) <span class="number">1</span></span><br><span class="line">&gt; pfcount hll</span><br><span class="line">(integer) <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="场景-6"><a href="#场景-6" class="headerlink" title="场景"></a>场景</h3><ol>
+<li>统计，不需要详细的数据。</li>
+</ol>
+<h2 id="Streams"><a href="#Streams" class="headerlink" title="Streams"></a>Streams</h2><blockquote>
+<p> Streams: append-only collections of map-like entries that provide an abstract log data type. They are covered in depth in the <a href="https://redis.io/topics/streams-intro" target="_blank" rel="noopener">Introduction to Redis Streams</a>. </p>
+</blockquote>
+<h2 id="介绍-5"><a href="#介绍-5" class="headerlink" title="介绍"></a>介绍</h2><p> Redis Streams是一种在内存中的抽象数据类型 ， 像日志文件一样，通常实现为仅追加模式打开的文件 。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
+        </div>
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">云服务器</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/29/Redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/10/27/day1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">day1</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#数据类型"><span class="toc-number">1.</span> <span class="toc-text">数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Binary-safe-strings"><span class="toc-number">1.1.</span> <span class="toc-text">Binary-safe strings</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">1.1.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令"><span class="toc-number">1.1.2.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#场景"><span class="toc-number">1.1.3.</span> <span class="toc-text">场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Lists"><span class="toc-number">1.2.</span> <span class="toc-text">Lists</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#命令-1"><span class="toc-number">1.2.2.</span> <span class="toc-text">命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#场景-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sets"><span class="toc-number">1.3.</span> <span class="toc-text">Sets</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用"><span class="toc-number">1.3.2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#场景-2"><span class="toc-number">1.3.3.</span> <span class="toc-text">场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sorted-sets"><span class="toc-number">1.4.</span> <span class="toc-text">Sorted sets</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-1"><span class="toc-number">1.4.1.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#场景-3"><span class="toc-number">1.4.2.</span> <span class="toc-text">场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hashes"><span class="toc-number">1.5.</span> <span class="toc-text">Hashes</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍-3"><span class="toc-number">1.5.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-2"><span class="toc-number">1.5.2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#场景-4"><span class="toc-number">1.5.3.</span> <span class="toc-text">场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Bit-arrays-or-simply-bitmaps"><span class="toc-number">1.6.</span> <span class="toc-text">Bit arrays (or simply bitmaps)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-3"><span class="toc-number">1.6.1.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#场景-5"><span class="toc-number">1.6.2.</span> <span class="toc-text">场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HyperLogLogs"><span class="toc-number">1.7.</span> <span class="toc-text">HyperLogLogs</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍-4"><span class="toc-number">1.7.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用-4"><span class="toc-number">1.7.2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#场景-6"><span class="toc-number">1.7.3.</span> <span class="toc-text">场景</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Streams"><span class="toc-number">1.8.</span> <span class="toc-text">Streams</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍-5"><span class="toc-number">1.9.</span> <span class="toc-text">介绍</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -232,9 +444,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
