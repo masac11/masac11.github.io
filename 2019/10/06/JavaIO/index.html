@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: PHP | (ฅ&gt;ω&lt;*ฅ) 噫你吼哇~</title>
+  <title>JavaIO | (ฅ&gt;ω&lt;*ฅ) 噫你吼哇~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="(ฅ&gt;ω&lt;*ฅ) 噫你吼哇~">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;PHP&#x2F;index.html">
+  <meta name="description" content="一、Java IOJava 中传统的 IO 是面向流的 IO，分为输入流和输出流，输入输出流又分为字节流和字符流。字节流以字节为单位进行读写，字符流以字符为单位进行读写。 二、文件编码utf-8：一个汉字三个字节，英文字母一个字节。 Unicode：一个汉字和英文字母都占两个字节。 Java程序的默认字符集是Unicode，在程序中声明的String类型的编码方式是和JVM编码方式相关的。 gbk">
+<meta name="keywords" content="Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaIO">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;10&#x2F;06&#x2F;JavaIO&#x2F;index.html">
 <meta property="og:site_name" content="(ฅ&gt;ω&lt;*ฅ) 噫你吼哇~">
+<meta property="og:description" content="一、Java IOJava 中传统的 IO 是面向流的 IO，分为输入流和输出流，输入输出流又分为字节流和字符流。字节流以字节为单位进行读写，字符流以字符为单位进行读写。 二、文件编码utf-8：一个汉字三个字节，英文字母一个字节。 Unicode：一个汉字和英文字母都占两个字节。 Java程序的默认字符集是Unicode，在程序中声明的String类型的编码方式是和JVM编码方式相关的。 gbk">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-06T03:56:38.664Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="(ฅ&gt;ω&lt;*ฅ) 噫你吼哇~" type="application/atom+xml">
@@ -154,97 +158,196 @@
           </div>
           <div id="js-content" class="content-ll">
             
-  
-  
+<article id="post-JavaIO" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/12/02/PHP%E4%BF%AE%E6%94%B9%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6%E7%9A%84%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2018-12-02T06:42:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-02</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/12/02/PHP%E4%BF%AE%E6%94%B9%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%A4%A7%E5%B0%8F%E9%99%90%E5%88%B6%E7%9A%84%E6%96%B9%E6%B3%95/">PHP修改上传文件大小限制的方法</a>
+    <h1 class="article-title" itemprop="name">
+      JavaIO
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/10/06/JavaIO/" class="archive-article-date">
+  	<time datetime="2019-10-06T03:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="一、Java-IO"><a href="#一、Java-IO" class="headerlink" title="一、Java IO"></a>一、Java IO</h1><p>Java 中传统的 IO 是面向流的 IO，分为输入流和输出流，输入输出流又分为字节流和字符流。字节流以字节为单位进行读写，字符流以字符为单位进行读写。</p>
+<h1 id="二、文件编码"><a href="#二、文件编码" class="headerlink" title="二、文件编码"></a>二、文件编码</h1><p>utf-8：一个汉字三个字节，英文字母一个字节。</p>
+<p>Unicode：一个汉字和英文字母都占两个字节。 Java程序的默认字符集是Unicode，在程序中声明的String类型的编码方式是和JVM编码方式相关的。</p>
+<p>gbk：汉字占两个字节，英文字母占一个字节。</p>
+<p>ANSI：汉字占两个字节，英文字母占一个字节。</p>
+<h1 id="三、File"><a href="#三、File" class="headerlink" title="三、File"></a>三、File</h1><p>File 类提供了对文件以及目录的操作，但是不包含对文件内容的操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//递归读取文件名称</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">listDir</span><span class="params">(File file)</span></span>&#123;</span><br><span class="line">    File[] fs = file.listFiles();</span><br><span class="line">    <span class="keyword">for</span>(File f:fs)&#123;</span><br><span class="line">        <span class="keyword">if</span>(f.isDirectory())	<span class="comment">//若是目录，则递归打印该目录下的文件</span></span><br><span class="line">            listDir(f);</span><br><span class="line">        <span class="keyword">if</span>(f.isFile())		<span class="comment">//若是文件，直接打印</span></span><br><span class="line">            System.out.println(f);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="四、RandomAccessFile"><a href="#四、RandomAccessFile" class="headerlink" title="四、RandomAccessFile"></a>四、RandomAccessFile</h1><p>该类能对文件内容进行随机访问读写，可以直接跳到访问位置，而IO流是按顺序读取字节，该类仅限于读写文件，不能像IO流一样，可以访问内存、网络和文件。 </p>
+<p>两种模式”rw”(读写)  “r”（只读)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接追加内容</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">append</span><span class="params">(String content)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    <span class="comment">//读写的数据源</span></span><br><span class="line">    File f = <span class="keyword">new</span> File(<span class="string">"D:\\text.txt"</span>);</span><br><span class="line">    <span class="comment">//指定文件不存在就创建同名文件</span></span><br><span class="line">    <span class="keyword">if</span>(!f.exists())	f.createNewFile(); 		</span><br><span class="line">    <span class="comment">//rw : 设为读写模式</span></span><br><span class="line">    RandomAccessFile raf = <span class="keyword">new</span> RandomAccessFile(f,<span class="string">"rw"</span>);</span><br><span class="line">    System.out.println(<span class="string">"当前记录指针位置："</span> + raf.getFilePointer());</span><br><span class="line">    <span class="comment">//记录指针与文件内容长度相等</span></span><br><span class="line">    raf.seek(raf.length());	</span><br><span class="line">    System.out.println(<span class="string">"当前文件长度："</span> + raf.length());</span><br><span class="line">    <span class="comment">//以字节形式写入字符串</span></span><br><span class="line">    raf.write(<span class="string">"ABCDEFG写入尾部"</span>.getBytes());</span><br><span class="line">    System.out.println(<span class="string">"当前记录指针位置："</span> + raf.getFilePointer());			</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="五、字节流"><a href="#五、字节流" class="headerlink" title="五、字节流"></a>五、字节流</h1><h3 id="InputStream-OutputStream"><a href="#InputStream-OutputStream" class="headerlink" title="InputStream/OutputStream"></a>InputStream/OutputStream</h3><p>InputStream /OutputStream 抽象类是所有字节输入流/字节输出流的超类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 复制文件</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">copyFileUsingFileStreams</span><span class="params">(File source, File dest)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    InputStream input = <span class="keyword">null</span>;</span><br><span class="line">    OutputStream output = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        input = <span class="keyword">new</span> FileInputStream(source);</span><br><span class="line">        output = <span class="keyword">new</span> FileOutputStream(dest);</span><br><span class="line">        <span class="keyword">byte</span>[] buf = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> bytesRead;</span><br><span class="line">        <span class="keyword">while</span> ((bytesRead = input.read(buf)) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            output.write(buf, <span class="number">0</span>, bytesRead);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        input.close();</span><br><span class="line">        output.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本实现类：FileInputStream-FileOutputStream"><a href="#基本实现类：FileInputStream-FileOutputStream" class="headerlink" title="基本实现类：FileInputStream/FileOutputStream"></a>基本实现类：FileInputStream/FileOutputStream</h3><p>用于从文件中读取/写入字节，适用于读取图像数据等，如果想要读取字符，应考虑使用 FileReader 类。</p>
+<h3 id="DataInputStream-DataOutputStream"><a href="#DataInputStream-DataOutputStream" class="headerlink" title="DataInputStream/DataOutputStream"></a>DataInputStream/DataOutputStream</h3><p>DataInputStream 继承 FilterInputStream 类，内部组合了一个 InputStream 类，提供了比 InputStream 更加方便的操作方法。</p>
+<p>这里采用了装饰器模式来实现。</p>
+<h3 id="BufferedInputStream-BufferedOutputStream"><a href="#BufferedInputStream-BufferedOutputStream" class="headerlink" title="BufferedInputStream/BufferedOutputStream"></a>BufferedInputStream/BufferedOutputStream</h3><p>提供了带缓存区的操作</p>
+<h1 id="六、字符流"><a href="#六、字符流" class="headerlink" title="六、字符流"></a>六、字符流</h1><h3 id="Reader-Writer"><a href="#Reader-Writer" class="headerlink" title="Reader/Writer"></a>Reader/Writer</h3><p>所有字符输入/输出流的超类</p>
+<h3 id="基本实现类：InputStreamReader-OutputStreamWriter"><a href="#基本实现类：InputStreamReader-OutputStreamWriter" class="headerlink" title="基本实现类：InputStreamReader/OutputStreamWriter"></a>基本实现类：InputStreamReader/OutputStreamWriter</h3><p>InputStreamReader 提供 bytes 流到 char 流的转换，按照编码解析。</p>
+<p>OutputStreamWriter 提供char 流到 bytes 流的转换，按照编码处理。</p>
+<h3 id="FileReader-FileWriter"><a href="#FileReader-FileWriter" class="headerlink" title="FileReader/FileWriter"></a>FileReader/FileWriter</h3><p>FileReader/FileWriter 继承自 InputStreamReader/OutputStreamWriter。</p>
+<h3 id="BufferedReader"><a href="#BufferedReader" class="headerlink" title="BufferedReader"></a>BufferedReader</h3><p>用于读取文本，可以一次读一行等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">insertNow</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    FileInputStream inputStream = <span class="keyword">new</span> FileInputStream(<span class="string">"/home/store.txt"</span>);</span><br><span class="line">    BufferedReader bufferedReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(inputStream));</span><br><span class="line">    String str = <span class="keyword">null</span>;</span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">while</span> ((str = bufferedReader.readLine()) != <span class="keyword">null</span>) &#123;</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//close</span></span><br><span class="line">    inputStream.close();</span><br><span class="line">    bufferedReader.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="BufferedWriter-PrintWriter"><a href="#BufferedWriter-PrintWriter" class="headerlink" title="BufferedWriter/PrintWriter"></a>BufferedWriter/PrintWriter</h3><p>一次写一行等，可直接写入字符串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(String content)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    File file = <span class="keyword">new</span> File(<span class="string">"/home/store.txt"</span>);</span><br><span class="line">    <span class="keyword">if</span> (!file.exists()) file.createNewFile();</span><br><span class="line">    BufferedWriter out = <span class="keyword">null</span>;</span><br><span class="line">    out = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(</span><br><span class="line">        <span class="keyword">new</span> FileOutputStream(file, <span class="keyword">true</span>)));</span><br><span class="line">    out.write(content + <span class="string">"\r\n"</span>);</span><br><span class="line">    out.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/06/JavaIO/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/02/PHP%E5%88%A4%E6%96%AD%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2018-11-02T06:46:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-02</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2019/10/20/Java%E5%BC%82%E5%B8%B8%E4%BD%93%E7%B3%BB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java异常体系
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/22/eclipse%E5%90%AF%E5%8A%A8%E6%8A%A5Removing-obsolete-files-from-server-%E9%94%99%E8%AF%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">eclipse启动报Removing obsolete files from server... 错误</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/02/PHP%E5%88%A4%E6%96%AD%E7%94%A8%E6%88%B7%E4%BD%BF%E7%94%A8%E7%9A%84%E8%AE%BE%E5%A4%87%E7%B1%BB%E5%9E%8B/">PHP判断用户使用的设备类型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#一、Java-IO"><span class="toc-number">1.</span> <span class="toc-text">一、Java IO</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#二、文件编码"><span class="toc-number">2.</span> <span class="toc-text">二、文件编码</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#三、File"><span class="toc-number">3.</span> <span class="toc-text">三、File</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#四、RandomAccessFile"><span class="toc-number">4.</span> <span class="toc-text">四、RandomAccessFile</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#五、字节流"><span class="toc-number">5.</span> <span class="toc-text">五、字节流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#InputStream-OutputStream"><span class="toc-number">5.0.1.</span> <span class="toc-text">InputStream/OutputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现类：FileInputStream-FileOutputStream"><span class="toc-number">5.0.2.</span> <span class="toc-text">基本实现类：FileInputStream/FileOutputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataInputStream-DataOutputStream"><span class="toc-number">5.0.3.</span> <span class="toc-text">DataInputStream/DataOutputStream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferedInputStream-BufferedOutputStream"><span class="toc-number">5.0.4.</span> <span class="toc-text">BufferedInputStream/BufferedOutputStream</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#六、字符流"><span class="toc-number">6.</span> <span class="toc-text">六、字符流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Reader-Writer"><span class="toc-number">6.0.1.</span> <span class="toc-text">Reader/Writer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#基本实现类：InputStreamReader-OutputStreamWriter"><span class="toc-number">6.0.2.</span> <span class="toc-text">基本实现类：InputStreamReader/OutputStreamWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FileReader-FileWriter"><span class="toc-number">6.0.3.</span> <span class="toc-text">FileReader/FileWriter</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferedReader"><span class="toc-number">6.0.4.</span> <span class="toc-text">BufferedReader</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BufferedWriter-PrintWriter"><span class="toc-number">6.0.5.</span> <span class="toc-text">BufferedWriter/PrintWriter</span></a></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -270,9 +373,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
