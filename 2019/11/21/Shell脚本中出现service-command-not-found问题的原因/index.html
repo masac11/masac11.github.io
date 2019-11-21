@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: Linux | (ฅ&gt;ω&lt;*ฅ) 噫你吼哇~</title>
+  <title>Shell脚本中出现service: command not found问题的原因 | (ฅ&gt;ω&lt;*ฅ) 噫你吼哇~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="(ฅ&gt;ω&lt;*ฅ) 噫你吼哇~">
-<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;tags&#x2F;Linux&#x2F;index.html">
+  <meta name="description" content="写了个 Shell 脚本用来检测 tomcat 的运行状态，当 tomcat 处于 stop 状态的时候使用 service restart 重启。 在终端内运行这个脚本并没有出错，当使用 crontab 定时任务运行时，却发现会报 service: command not found  错误。当使用 systemctl restart tomcat时就不会报错。 在使用 whereis 找到 s">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Shell脚本中出现service: command not found问题的原因">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;21&#x2F;Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%87%BA%E7%8E%B0service-command-not-found%E9%97%AE%E9%A2%98%E7%9A%84%E5%8E%9F%E5%9B%A0&#x2F;index.html">
 <meta property="og:site_name" content="(ฅ&gt;ω&lt;*ฅ) 噫你吼哇~">
+<meta property="og:description" content="写了个 Shell 脚本用来检测 tomcat 的运行状态，当 tomcat 处于 stop 状态的时候使用 service restart 重启。 在终端内运行这个脚本并没有出错，当使用 crontab 定时任务运行时，却发现会报 service: command not found  错误。当使用 systemctl restart tomcat时就不会报错。 在使用 whereis 找到 s">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-21T15:46:42.954Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="(ฅ&gt;ω&lt;*ฅ) 噫你吼哇~" type="application/atom+xml">
@@ -154,159 +158,39 @@
           </div>
           <div id="js-content" class="content-ll">
             
+<article id="post-Shell脚本中出现service-command-not-found问题的原因" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      Shell脚本中出现service: command not found问题的原因
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/11/21/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%87%BA%E7%8E%B0service-command-not-found%E9%97%AE%E9%A2%98%E7%9A%84%E5%8E%9F%E5%9B%A0/" class="archive-article-date">
+
+        
+        <a href="/2019/11/21/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%87%BA%E7%8E%B0service-command-not-found%E9%97%AE%E9%A2%98%E7%9A%84%E5%8E%9F%E5%9B%A0/" class="archive-article-date">
   	<time datetime="2019-11-21T14:02:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-21</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/11/21/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%87%BA%E7%8E%B0service-command-not-found%E9%97%AE%E9%A2%98%E7%9A%84%E5%8E%9F%E5%9B%A0/">Shell脚本中出现service: command not found问题的原因</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+        
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/10/26/LinuxCPU%E4%BD%BF%E7%94%A8%E7%8E%87%E8%BF%87%E9%AB%98%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/" class="archive-article-date">
-  	<time datetime="2019-10-26T13:29:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/10/26/LinuxCPU%E4%BD%BF%E7%94%A8%E7%8E%87%E8%BF%87%E9%AB%98%E9%97%AE%E9%A2%98%E6%8E%92%E6%9F%A5/">LinuxCPU使用率过高问题排查</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/22/Linux%E4%B8%8B%E6%89%93%E5%BC%80Windows%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%88%96%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2019-07-22T07:04:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/22/Linux%E4%B8%8B%E6%89%93%E5%BC%80Windows%E4%B8%AD%E7%9A%84%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E6%88%96%E6%96%87%E4%BB%B6%E5%90%8D%E7%A7%B0%E4%B9%B1%E7%A0%81%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">Linux下打开Windows中的文件内容或文件名称乱码问题解决方法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+    <div class="article-entry" itemprop="articleBody">
       
-        </div></section>
+        <p>写了个 Shell 脚本用来检测 tomcat 的运行状态，当 tomcat 处于 stop 状态的时候使用 <code>service restart</code> 重启。</p>
+<p>在终端内运行这个脚本并没有出错，当使用 crontab 定时任务运行时，却发现会报 <code>service: command not found</code>  错误。当使用 <code>systemctl restart tomcat</code>时就不会报错。</p>
+<p>在使用 <code>whereis</code> 找到 <code>service</code> 文件位于<code>/usr/sbin/service</code>目录，<code>systemctl</code>文件位于<code>/usr/bin</code> 目录。</p>
+<p>在脚本中加入<code>echo $PATH</code>命令输出脚本的环境变量，结果输出 <code>/usr/bin:/bin</code>，并没有<code>/usr/sbin/</code>，在终端中输入<code>echo $PATH</code>可以发现是有<code>/usr/sbin/</code>路径的，这也就表示了为什么终端可以，而单独运行脚本不行。</p>
+<p>将 tomcat 的重启命令修改成<code>/usr/sbin/service tomcat restart</code>也可以运行成功或者添加<code>/usr/sbin/</code>的环境变量。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CWindows%E7%9A%84U%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/" class="archive-article-date">
-  	<time datetime="2018-10-22T07:06:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/22/Linux%E4%B8%8B%E5%88%B6%E4%BD%9CWindows%E7%9A%84U%E7%9B%98%E5%90%AF%E5%8A%A8%E7%9B%98/">Linux下制作Windows的U盘启动盘</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -318,19 +202,119 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/11/21/Shell%E8%84%9A%E6%9C%AC%E4%B8%AD%E5%87%BA%E7%8E%B0service-command-not-found%E9%97%AE%E9%A2%98%E7%9A%84%E5%8E%9F%E5%9B%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2019/10/29/Redis%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Redis基本数据类型及使用场景</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    目录，不存在的…
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -356,9 +340,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
